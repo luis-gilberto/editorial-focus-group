@@ -4,21 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move at the Speed of What Matters: A Personal Reset</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #1a1a1a;
-            --bg-accent: rgba(255, 107, 107, 0.1);
-            --text-primary: rgba(255, 255, 255, 0.9);
-            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-primary: #f5f5f5;
+            --text-secondary: #b8b8b8;
+            --text-muted: #888888;
             --accent-coral: #ff6b6b;
-            --border-subtle: rgba(255, 255, 255, 0.1);
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
+            --border-subtle: #333333;
         }
 
         * {
@@ -28,35 +23,11 @@
         }
 
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-family: var(--font-sans);
             line-height: 1.7;
             font-weight: 300;
-            font-size: 1.1rem;
-        }
-
-        .hero-section {
-            width: 100%;
-            height: 70vh;
-            background-image: url('https://luis-gilberto.github.io/editorial-focus-group/final_banner.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 4rem;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
         }
 
         .container {
@@ -65,437 +36,474 @@
             padding: 0 2rem;
         }
 
-        .content-grid {
+        .hero-section {
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-grid {
             display: grid;
-            grid-template-columns: 65% 30%;
-            gap: 5%;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
             margin-bottom: 4rem;
         }
 
         .main-content {
-            grid-column: 1;
+            min-width: 0;
         }
 
-        .visual-column {
-            grid-column: 2;
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
         }
 
-        .visual-element {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--card-shadow);
-            border-left: 4px solid var(--accent-coral);
-        }
-
-        .section-heading {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 600;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
             color: var(--text-primary);
-            margin: 3rem 0 1.5rem 0;
-            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
-        .paragraph {
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            margin-top: 2rem;
+        }
+
+        p {
             margin-bottom: 1.5rem;
             color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
-        .pull-quote {
-            background: var(--bg-accent);
-            border-left: 4px solid var(--accent-coral);
-            padding: 2rem;
-            margin: 2rem 0;
-            font-family: var(--font-serif);
-            font-style: italic;
+        .lead-paragraph {
             font-size: 1.3rem;
-            line-height: 1.5;
             color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .sidebar-element {
+            background-color: var(--bg-secondary);
+            border-left: 3px solid var(--accent-coral);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #252525 100%);
+            border: 1px solid var(--border-subtle);
             border-radius: 8px;
-        }
-
-        .drop-cap {
-            float: left;
-            font-size: 4rem;
-            line-height: 3rem;
-            padding-right: 0.5rem;
-            padding-top: 0.25rem;
-            color: var(--accent-coral);
-            font-family: var(--font-serif);
-            font-weight: 700;
-        }
-
-        .tools-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tools-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .tools-list li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent-coral);
-            font-weight: bold;
-        }
-
-        .chart-container {
-            background: var(--bg-secondary);
-            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
-            height: 300px;
         }
 
-        .stat-card {
-            background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 107, 107, 0.05));
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-subtle);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-coral);
-            font-family: var(--font-serif);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .footer-section {
-            background: var(--bg-secondary);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .author-bio {
-            grid-column: 1;
-        }
-
-        .cta-section {
-            grid-column: 2;
-            background: var(--bg-accent);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-coral);
-        }
-
-        .cta-question {
-            font-family: var(--font-serif);
+        .insight-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.2rem;
-            font-weight: 600;
+            color: var(--accent-coral);
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .insight-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-coral);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 1.2rem;
+            width: 2px;
+            height: calc(100% - 0.5rem);
+            background-color: var(--border-subtle);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent-coral);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .quote-highlight {
-            background: linear-gradient(135deg, var(--accent-coral), rgba(255, 107, 107, 0.8));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(90deg, transparent 0%, var(--bg-secondary) 50%, transparent 100%);
+            text-align: center;
+            position: relative;
         }
 
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        .quote-highlight::before,
+        .quote-highlight::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-coral);
+            font-family: 'Playfair Display', serif;
+            position: absolute;
+            top: 0;
+        }
+
+        .quote-highlight::before {
+            left: 1rem;
+        }
+
+        .quote-highlight::after {
+            right: 1rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background-color: var(--bg-secondary);
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-coral);
+        }
+
+        .tool-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-right: 0.5rem;
+        }
+
+        .tool-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .author-bio {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .author-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent-coral);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #252525 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
             margin: 3rem 0;
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .content-grid, .footer-grid {
+        .cta-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .visual-separator {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--accent-coral) 50%, transparent 100%);
+            margin: 3rem auto;
+        }
+
+        @media (max-width: 968px) {
+            .article-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .main-content, .visual-column, .author-bio, .cta-section {
-                grid-column: 1;
+            .sidebar {
+                position: static;
             }
             
-            .hero-section {
-                height: 50vh;
+            h1 {
+                font-size: 2rem;
             }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        .productivity-paradox {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-coral);
+        }
+
+        .paradox-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-coral);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .before, .after {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .before {
+            background-color: rgba(136, 136, 136, 0.1);
+        }
+
+        .after {
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+
+        .before-after h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .before h4 {
+            color: var(--text-muted);
+        }
+
+        .after h4 {
+            color: var(--accent-coral);
         }
     </style>
 </head>
 <body>
-    <header class="hero-section">
-        <div class="hero-overlay"></div>
-    </header>
+    <div class="hero-section">
+        <img src="https://luis-gilberto.github.io/editorial-focus-group/final_banner.png" alt="Move at the Speed of What Matters: A Personal Reset" class="hero-image">
+    </div>
 
-    <main class="container">
-        <div class="content-grid">
-            <article class="main-content">
-                <p class="paragraph">
-                    <span class="drop-cap">I</span>f there's one thing I've learned in this season of reinvention, it's that every setback comes with a hidden syllabus. It's a curriculum you don't ask for, but one that teaches you more than any title ever could… if you're willing to lean in and listen.
-                </p>
+    <div class="container">
+        <div class="article-grid">
+            <main class="main-content">
+                <p class="lead-paragraph">If there's one thing I've learned in this season of reinvention, it's that every setback comes with a hidden syllabus. It's a curriculum you don't ask for, but one that teaches you more than any title ever could—if you're willing to lean in and listen.</p>
 
-                <p class="paragraph">
-                    My time at Microsoft shaped me in countless ways—strategically, creatively, and professionally. But it was what came after that taught me the most about myself.
-                </p>
+                <p>My time at Microsoft shaped me in countless ways—strategically, creatively, and professionally. But it was what came after that taught me the most about myself. After years of contributing to high-impact campaigns and storytelling at scale, I found myself facing an unexpected career pivot. Not by choice—but perhaps by design.</p>
 
-                <p class="paragraph">
-                    After years of contributing to high-impact campaigns and storytelling at scale, I found myself facing an unexpected career pivot. Not by choice—but perhaps by design.
-                </p>
+                <p>This wasn't just time off. It was time in. Time to get quiet, curious, and intentional. I broke the productivity spell, reconnected with my creative rhythm, and started asking questions about what success could look like on my own terms.</p>
 
-                <p class="paragraph">
-                    This wasn't just time off. It was time in. Time to get quiet, curious, and intentional. I broke the productivity spell, reconnected with my creative rhythm, and started asking questions about what success could look like on my own terms.
-                </p>
+                <div class="quote-highlight">
+                    Sometimes the most radical move you can make is to slow down.
+                </div>
 
-                <h2 class="section-heading">Breaking the Productivity Spell</h2>
+                <section class="section">
+                    <h2>Breaking the Productivity Spell</h2>
+                    
+                    <p>I didn't realize how addicted I'd become to being productive until I stopped. The first few weeks were jarring. I didn't miss the meetings or inbox chaos. I missed the validation. I had no sprint to run, no one to impress, and no reason to polish executive updates at 11:58 PM.</p>
 
-                <p class="paragraph">
-                    I didn't realize how addicted I'd become to being productive until I stopped.
-                </p>
+                    <p>Without that drumbeat of urgency, I felt lost, floaty, and untethered. That was the withdrawal.</p>
 
-                <p class="paragraph">
-                    The first few weeks were jarring. I didn't miss the meetings or inbox chaos. I missed the validation. I had no sprint to run, no one to impress, and no reason to polish executive updates at 11:58 PM. Without that drumbeat of urgency, I felt lost, floaty, and untethered.
-                </p>
+                    <p>For years, my worth was wrapped up in how many balls I could juggle and how gracefully I pulled it all off. I wore busyness like a badge and treated rest as something to be earned only after the deadline, the quarter, or the fire drill.</p>
 
-                <p class="paragraph">
-                    That was the withdrawal.
-                </p>
-
-                <p class="paragraph">
-                    For years, my worth was wrapped up in how many balls I could juggle and how gracefully I pulled it all off. I wore busyness like a badge and treated rest as something to be earned only after the deadline, the quarter, or the fire drill. When that noise disappeared, so did the armor. Beneath it, I found exhaustion, a creative voice I hadn't listened to in years, and a newfound instinct to do things simply because they felt good.
-                </p>
-
-                <p class="paragraph">
-                    Right before I left, a mantra began echoing across the org: <span class="quote-highlight">"Move at the speed of AI."</span> Each time I heard it, something in me tightened—because the truth is, we're not machines. We're human. And sometimes the most radical move you can make is to slow down.
-                </p>
-
-                <p class="paragraph">
-                    So, I slowed down.
-                </p>
-
-                <p class="paragraph">
-                    I gave myself permission to stop optimizing every second. I learned things that had no deliverables. I sat with discomfort instead of trying to outrun it. I took silent walks. Cooked meals for no reason. Measured my days not by output, but by alignment.
-                </p>
-
-                <p class="paragraph">
-                    It was uncomfortable. And exactly what I needed.
-                </p>
-
-                <h2 class="section-heading">A Website, a Blank Page, and the Return of Curiosity</h2>
-
-                <p class="paragraph">
-                    <span class="drop-cap">O</span>nce the noise quieted, curiosity came back.
-                </p>
-
-                <p class="paragraph">
-                    Real curiosity. Not the performative kind you add to LinkedIn bios. The kind that keeps you up late, not from anxiety, but from excitement. The kind that makes you tinker, test, and teach yourself things you never thought you'd take on solo.
-                </p>
-
-                <p class="paragraph">
-                    That's how my portfolio site was born.
-                </p>
-
-                <p class="paragraph">
-                    No agency. No team. Just me, a blank Framer canvas, some AI-powered sidekicks, and one big question: what would it look like to design something that feels like me?
-                </p>
-
-                <p class="paragraph">
-                    It turned out to be more than a website. It became a playground for everything I'd been learning and unlearning. Branding, typography, UX, storytelling—I pieced it all together intuitively, imperfectly, and proudly.
-                </p>
-
-                <p class="paragraph">
-                    Somewhere between debugging CSS and choosing font weights, I realized I wasn't just building a portfolio. I was rebuilding myself.
-                </p>
-
-                <h3>Tools that shaped the process:</h3>
-                <ul class="tools-list">
-                    <li><strong>Framer</strong> (visual playground)</li>
-                    <li><strong>ChatGPT, Copilot, GenSpark</strong> (brainstorm buddies and problem solvers)</li>
-                    <li><strong>Trae</strong> (IDE for adaptive AI development and autonomous coding workflows)</li>
-                    <li><strong>Canva Pro</strong> (design polish and assets)</li>
-                    <li><strong>A healthy dose of intuition and YouTube rabbit holes</strong></li>
-                </ul>
-
-                <div class="divider"></div>
-
-                <h2 class="section-heading">Final Thought: Rest Isn't the End. Sometimes It's the Beginning.</h2>
-
-                <p class="paragraph">
-                    <span class="drop-cap">I</span>f you're in a season of uncertainty—feeling underestimated, unarmored, or just plain tired: you're not broken.
-                </p>
-
-                <p class="paragraph">
-                    You may simply be between versions. And what's emerging might surprise you.
-                </p>
-            </article>
-
-            <aside class="visual-column">
-                <div class="visual-element">
-                    <div class="pull-quote">
-                        "Sometimes the most radical move you can make is to slow down."
+                    <div class="productivity-paradox">
+                        <div class="paradox-title">The AI Speed Paradox</div>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">Right before I left, a mantra began echoing across the org: "Move at the speed of AI." Each time I heard it, something in me tightened—because the truth is, we're not machines.</p>
+                        
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Moving at AI Speed</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary);">Infinite acceleration, output-driven, always optimizing</p>
+                            </div>
+                            <div class="after">
+                                <h4>Moving at Human Speed</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary);">Intentional pace, alignment-driven, strategic thinking</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="visual-element">
-                    <h4 style="color: var(--accent-coral); margin-bottom: 1rem; font-family: var(--font-serif);">The Productivity Paradox</h4>
-                    <div class="chart-container" style="height: 200px;">
-                        <canvas id="productivityChart"></canvas>
+                    <p>So, I slowed down. I gave myself permission to stop optimizing every second. I learned things that had no deliverables. I sat with discomfort instead of trying to outrun it. I took silent walks. Cooked meals for no reason. Measured my days not by output, but by alignment.</p>
+
+                    <p>Because once I stopped performing productivity, I realized I wasn't broken—I was burned out. And my value had never been about the volume of my workload. It had always been about vision, voice, and the way I connect dots others don't see.</p>
+                </section>
+
+                <div class="visual-separator"></div>
+
+                <section class="section">
+                    <h2>A Website, a Blank Page, and the Return of Curiosity</h2>
+                    
+                    <p>Once the noise quieted, curiosity came back. Real curiosity. Not the performative kind you add to LinkedIn bios. The kind that keeps you up late, not from anxiety, but from excitement.</p>
+
+                    <p>That's how my portfolio site was born. No agency. No team. Just me, a blank Framer canvas, some AI-powered sidekicks, and one big question: what would it look like to design something that feels like me?</p>
+
+                    <p>It turned out to be more than a website. It became a playground for everything I'd been learning and unlearning. Branding, typography, UX, storytelling—I pieced it all together intuitively, imperfectly, and proudly.</p>
+
+                    <p>Somewhere between debugging CSS and choosing font weights, I realized I wasn't just building a portfolio. I was rebuilding myself.</p>
+
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <span class="tool-name">Framer</span>
+                            <span class="tool-description">visual playground</span>
+                        </div>
+                        <div class="tool-item">
+                            <span class="tool-name">ChatGPT, Copilot, GenSpark</span>
+                            <span class="tool-description">brainstorm buddies and problem solvers</span>
+                        </div>
+                        <div class="tool-item">
+                            <span class="tool-name">Trae</span>
+                            <span class="tool-description">IDE for adaptive AI development and autonomous coding workflows</span>
+                        </div>
+                        <div class="tool-item">
+                            <span class="tool-name">Canva Pro</span>
+                            <span class="tool-description">design polish and assets</span>
+                        </div>
+                        <div class="tool-item">
+                            <span class="tool-name">Intuition + YouTube</span>
+                            <span class="tool-description">a healthy dose of curiosity</span>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="stat-card">
-                    <div class="stat-number">72%</div>
-                    <div class="stat-label">Of professionals report burnout</div>
-                </div>
+                <div class="visual-separator"></div>
 
-                <div class="stat-card">
-                    <div class="stat-number">3x</div>
-                    <div class="stat-label">More creative when rested</div>
-                </div>
+                <section class="section">
+                    <h2>Rest Isn't the End. Sometimes It's the Beginning.</h2>
+                    
+                    <p>If you're in a season of uncertainty—feeling underestimated, unarmored, or just plain tired: you're not broken. You may simply be between versions. And what's emerging might surprise you.</p>
 
-                <div class="visual-element">
-                    <div class="pull-quote">
-                        "I wasn't just building a portfolio. I was rebuilding myself."
-                    </div>
-                </div>
-
-                <div class="visual-element">
-                    <h4 style="color: var(--accent-coral); margin-bottom: 1rem; font-family: var(--font-serif);">Creative Process Flow</h4>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="processChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="visual-element">
-                    <div class="pull-quote">
-                        "You may simply be between versions. And what's emerging might surprise you."
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-    <footer class="footer-section">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="author-bio">
-                    <h3 style="color: var(--accent-coral); font-family: var(--font-serif); margin-bottom: 1rem;">Luis Gilberto</h3>
-                    <p style="color: var(--text-secondary);">
-                        Luis is a seasoned creative strategist who helped shape brand and innovation narratives at Microsoft. Today, he explores the intersection of technology, creativity, and intentional career design through writing and thought leadership. This article examines how professional identity can evolve beyond traditional corporate titles.
-                    </p>
-                    <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
-                        <strong>LUIS-GILBERTO.COM • SUMMER 2025</strong><br>
-                        © 2025 All Rights Reserved
-                    </p>
-                </div>
+                    <p>The hidden syllabus teaches lessons you can't learn in any other classroom. It's messy and magical. It asks you to trust the process even when you can't see the outcome. It demands that you slow down not because you're giving up, but because you're finally getting serious about what matters.</p>
+                </section>
 
                 <div class="cta-section">
                     <div class="cta-question">What has slowing down helped you rediscover about yourself?</div>
-                    <p style="color: var(--text-secondary);">
-                        I'd love to hear your thoughts and experiences in the comments.
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">I'd love to hear your thoughts in the comments.</p>
+                </div>
+
+                <div class="author-bio">
+                    <div class="author-name">Luis Gilberto</div>
+                    <p>Luis is a seasoned creative strategist who helped shape brand and innovation narratives at Microsoft. Today, he explores the intersection of technology, creativity, and intentional career design through writing and thought leadership. This article examines how professional identity can evolve beyond traditional corporate structures.</p>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <div class="insight-box">
+                    <div class="insight-title">The Hidden Syllabus</div>
+                    <div class="insight-text">Every career setback contains lessons you can't learn any other way—if you're willing to slow down and listen.</div>
+                </div>
+
+                <div class="sidebar-element">
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--accent-coral);">From Microsoft to Renaissance</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Corporate Exit</div>
+                        <div class="timeline-content">Unexpected career pivot after years of high-impact work</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">The Withdrawal</div>
+                        <div class="timeline-content">Missing validation, not meetings</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Curiosity Returns</div>
+                        <div class="timeline-content">Building a portfolio site becomes rebuilding identity</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">The Breakthrough</div>
+                        <div class="timeline-content">Helping sister plan wedding in a week using AI + intuition</div>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <div class="insight-title">The Sister's Wedding Insight</div>
+                    <div class="insight-text">Planning a wedding in one week taught me that AI amplifies human creativity—it doesn't replace it. The magic happens in the combination.</div>
+                </div>
+
+                <div class="sidebar-element">
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--accent-coral);">Redefining Success</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+                        From measuring days by output to measuring them by alignment. From performing productivity to finding genuine creative flow.
                     </p>
                 </div>
-            </div>
+            </aside>
         </div>
-    </footer>
-
-    <script>
-        // Productivity Chart
-        const ctx1 = document.getElementById('productivityChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
-                datasets: [{
-                    label: 'Burnout Level',
-                    data: [85, 90, 95, 75, 45, 25],
-                    borderColor: '#ff6b6b',
-                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
-                    tension: 0.4
-                }, {
-                    label: 'Creative Energy',
-                    data: [20, 15, 10, 35, 65, 85],
-                    borderColor: '#4ecdc4',
-                    backgroundColor: 'rgba(78, 205, 196, 0.1)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: { color: 'rgba(255, 255, 255, 0.7)' }
-                    }
-                },
-                scales: {
-                    y: {
-                        ticks: { color: 'rgba(255, 255, 255, 0.7)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
-                    },
-                    x: {
-                        ticks: { color: 'rgba(255, 255, 255, 0.7)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
-                    }
-                }
-            }
-        });
-
-        // Process Chart
-        const ctx2 = document.getElementById('processChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'doughnut',
-            data: {
-                labels: ['Planning', 'Design', 'Development', 'Reflection'],
-                datasets: [{
-                    data: [25, 35, 30, 10],
-                    backgroundColor: [
-                        '#ff6b6b',
-                        '#4ecdc4',
-                        '#45b7d1',
-                        '#f9ca24'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { 
-                            color: 'rgba(255, 255, 255, 0.7)',
-                            padding: 20
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    </div>
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDsO8tdBrQBxxFfrT8gvSfOXUD796zeOO2zQ3W5jhTJQd7aJyAsxDgBjVWf%2BCivuUXkEW8nq%2BkDdJhfxahEcrklbNapRy7OhQKDuBfQp0JmTZ8UVRq0A%2FMb7JmED36uAY7hTeWsWOFtt1IEsVJ3HQmNYdPfw9r9Dn5kw7cFIxVl2yXzm63Rs3nX4jGENM2J9rbqrlAtjZQP5gahFj74UMpS%2F%2BeEEdpQ5rvj%2F7hoLJnF%2F6DOf9EHNQJIU3uxYreOcW5S%2FCsW9ZX8U88sKlEBXLAuMiUb%2B8Bzi9p7XP%2Bs%2By2dSzRd9oBi2oVJcko6iDP3LQwvSGR1LJRL0Z8dTFq9lTx88d8zpZK%2Bjt5jMoq7P6Wi3qLdKm9a23nOOkxg1JX1PBRQ2%2BXfoaI1%2F%2ByHN9qjK%2FGQSQ7W2QYYw9bIU5wGvSlZ9kKtp5sdjKxM0ba33fZc7sXFpdliz58e%2Fzi1ry%2F51BLLECoUr2%2FFmA6dYED1uYwZaIyRbSRsnzhsEmiDL2RQUBp2P%2FVYrHvo%2B6%2B2MIk1I8Wgo%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDm2Mz73BRoQzyZNeJrU21Dsu0lolCQ7xF%2BHWkUoRXXvw7UvW3arCcuZK6JN2N9V5Px313GLuTmW%2B8UhjqnwlFY7e4YqxhqMQFAMLzLD5IJIjtt19T%2Bus7Pm0SFbro4e0wPmQVq3syqoYnELQh3elSSohcCA7sq7%2F10k9nIw%2Bys3g7ivWRRaNBW55NmWta4r0qjuaSLT0Pe8sX9kLSKrlhBMYOBi7tX2ykzXvnlB7vyyP%2FWPNDtuTFNTwaAMzF4bgnkeANIqj33xBlT8dkZocjn5OR%2Fds4Lk2WYFTHqwSnRngVoFwTfzLXQdJ3g2p22obzSW7D0mTQ%2FC1%2B5JWgQ0WcfMw27zq81fc5jNPH3DlyvKSOMW1Uq7EU3gD8LPawdb2lJFerm1s315I0cRBmXhjdsbpy5t77u5%2BLchtB%2FoW2prxaxqufERFPwfxE%2BD3h2nA9uD8fs%2BgtovWOMZRnswC0GtJ48iMqNRA%2BNZJLhGsZaJGj74kh7WXYVyjVYd6I4n1%2BYFTNTJyzvUX2yLkk2Flskw%3D";
         window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDsO8tdBrQBxxFfrT8gvSfOXUD796zeOO2zQ3W5jhTJQd7aJyAsxDgBjVWf+CivuUXkEW8nq+kDdJhfxahEcrklbNapRy7OhQKDuBfQp0JmTZ8UVRq0A/Mb7JmED36uAY7hTeWsWOFtt1IEsVJ3HQmNYdPfw9r9Dn5kw7cFIxVl2yXzm63Rs3nX4jGENM2J9rbqrlAtjZQP5gahFj74UMpS/+eEEdpQ5rvj/7hoLJnF/6DOf9EHNQJIU3uxYreOcW5S/CsW9ZX8U88sKlEBXLAuMiUb+8Bzi9p7XP+s+y2dSzRd9oBi2oVJcko6iDP3LQwvSGR1LJRL0Z8dTFq9lTx88d8zpZK+jt5jMoq7P6Wi3qLdKm9a23nOOkxg1JX1PBRQ2+XfoaI1/+yHN9qjK/GQSQ7W2QYYw9bIU5wGvSlZ9kKtp5sdjKxM0ba33fZc7sXFpdliz58e/zi1ry/51BLLECoUr2/FmA6dYED1uYwZaIyRbSRsnzhsEmiDL2RQUBp2P/VYrHvo+6+2MIk1I8Wgo=";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDm2Mz73BRoQzyZNeJrU21Dsu0lolCQ7xF+HWkUoRXXvw7UvW3arCcuZK6JN2N9V5Px313GLuTmW+8UhjqnwlFY7e4YqxhqMQFAMLzLD5IJIjtt19T+us7Pm0SFbro4e0wPmQVq3syqoYnELQh3elSSohcCA7sq7/10k9nIw+ys3g7ivWRRaNBW55NmWta4r0qjuaSLT0Pe8sX9kLSKrlhBMYOBi7tX2ykzXvnlB7vyyP/WPNDtuTFNTwaAMzF4bgnkeANIqj33xBlT8dkZocjn5OR/ds4Lk2WYFTHqwSnRngVoFwTfzLXQdJ3g2p22obzSW7D0mTQ/C1+5JWgQ0WcfMw27zq81fc5jNPH3DlyvKSOMW1Uq7EU3gD8LPawdb2lJFerm1s315I0cRBmXhjdsbpy5t77u5+LchtB/oW2prxaxqufERFPwfxE+D3h2nA9uD8fs+gtovWOMZRnswC0GtJ48iMqNRA+NZJLhGsZaJGj74kh7WXYVyjVYd6I4n1+YFTNTJyzvUX2yLkk2Flskw=";
     </script>
     
     <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
