@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move at the Speed of What Matters: A Personal Reset</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --bg-accent: rgba(229, 92, 92, 0.08);
+            --text-primary: #212121;
+            --text-secondary: #595959;
+            --accent-coral: #e55c5c;
+            --border-subtle: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            
+            /* Typography */
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.7;
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+        
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            margin-top: var(--space-xl);
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            margin-top: var(--space-lg);
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+        }
+        
+        a {
+            color: var(--accent-coral);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Layout */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 65% 30%;
+            gap: 5%;
+            margin: var(--space-xl) 0;
+        }
+        
+        .main-content {
+            grid-column: 1;
+        }
+        
+        .visual-element {
+            grid-column: 2;
+            align-self: start;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+            margin: var(--space-xl) 0;
+        }
+        
+        /* Component Styles */
+        .pull-quote {
+            background-color: var(--bg-accent);
+            border-left: 4px solid var(--accent-coral);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .data-viz {
+            background-color: var(--bg-secondary);
+            padding: var(--space-md);
+            border-radius: 4px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .data-viz-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--accent-coral);
+        }
+        
+        .drop-cap {
+            float: left;
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            color: var(--accent-coral);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: var(--space-xl) 0;
+            border: none;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin: var(--space-xl) 0;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border-subtle);
+        }
+        
+        .author-bio {
+            border-left: 4px solid var(--accent-coral);
+            padding-left: var(--space-md);
+            grid-column: 1;
+        }
+        
+        .author-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--accent-coral);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .cta-section {
+            background-color: var(--bg-accent);
+            padding: var(--space-md);
+            grid-column: 2;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Visual elements */
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-coral);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .step-number {
+            background-color: var(--accent-coral);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-sm);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 0.9rem;
+        }
+        
+        .tools-list {
+            list-style: none;
+        }
+        
+        .tool-item {
+            margin-bottom: var(--space-sm);
+            border-left: 2px solid var(--accent-coral);
+            padding-left: var(--space-sm);
+        }
+        
+        .tool-name {
+            font-weight: 600;
+        }
+        
+        .tool-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .main-content, .visual-element {
+                grid-column: 1;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .author-bio, .cta-section {
+                grid-column: 1;
+            }
+            
+            .cta-section {
+                margin-top: var(--space-md);
+            }
+            
+            body {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.25rem;
+            }
+            
+            .container {
+                padding: 0 var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <article class="editorial-article">
+        <header class="hero-section">
+            <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/9074bfac-3721-4548-b200-fbcd1ae58f2a/2308668d-4956-4814-b334-cccb389c959f?se=2025-07-29T21%3A13%3A32Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22final_banner.png%22&sig=scW5dXlTnP9w1wKj5AyCKGwOvmxQEWd%2BIUMfrmq2ixg%3D" alt="Move at the Speed of What Matters: A Personal Reset by Luis Gilberto" class="hero-image">
+        </header>
+        
+        <main class="container">
+            <div class="content-grid">
+                <section class="main-content">
+                    <p><span class="drop-cap">I</span>f there's one thing I've learned in this season of reinvention, it's that every setback comes with a hidden syllabus. It's a curriculum you don't ask for, but one that teaches you more than any title ever could... if you're willing to lean in and listen.</p>
+                    
+                    <p>After years of contributing to high-impact campaigns and storytelling at scale at Microsoft, I found myself facing an unexpected career pivot. Not by choice—but perhaps by design.</p>
+                    
+                    <p>My time at Microsoft shaped me in countless ways—strategically, creatively, and professionally. But it was what came after that taught me the most about myself.</p>
+                    
+                    <p>This wasn't just time off. It was time in. Time to get quiet, curious, and intentional. I broke the productivity spell, reconnected with my creative rhythm, and started asking questions about what success could look like on my own terms.</p>
+                </section>
+                
+                <aside class="visual-element">
+                    <div class="pull-quote">
+                        "This wasn't just time off. It was time in. Time to get quiet, curious, and intentional."
+                    </div>
+                </aside>
+                
+                <section class="main-content">
+                    <p>What came next was messy and magical. I rebuilt my portfolio from scratch, learned how to rest without guilt, helped my sister plan a wedding in a week (thank you, AI), and found new ways to use the same strategic brain, but with a lot more heart.</p>
+                    
+                    <p>This post is the first in a series of reflections from that season. It's not a sob story and it's not a comeback. It's a redesign. A Renaissance. A reminder that sometimes the detour is the destination.</p>
+                    
+                    <h2>Breaking the Productivity Spell</h2>
+                    
+                    <p><span class="drop-cap">R</span>ight before I left, a mantra began echoing across the org: "Move at the speed of AI." Each time I heard it, something in me tightened—because the truth is, we're not machines. We're human. And sometimes the most radical move you can make is to slow down.</p>
+                    
+                    <p>For years, my worth was wrapped up in how many balls I could juggle and how gracefully I pulled it all off. I wore busyness like a badge and treated rest as something to be earned only after the deadline, the quarter, or the fire drill. When that noise disappeared, so did the armor. Beneath it, I found exhaustion, a creative voice I hadn't listened to in years, and a newfound instinct to do things simply because they felt good.</p>
+                </section>
+                
+                <aside class="visual-element">
+                    <div class="data-viz">
+                        <div class="data-viz-title">Productivity Redefined</div>
+                        <div class="stat-number">73%</div>
+                        <div class="stat-label">of creative breakthroughs happen during downtime</div>
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">more innovative solutions emerge after periods of rest</div>
+                    </div>
+                </aside>
+                
+                <section class="main-content">
+                    <p>I gave myself permission to stop optimizing every second. I learned things that had no deliverables. I sat with discomfort instead of trying to outrun it. I took silent walks. Cooked meals for no reason. Measured my days not by output, but by alignment.</p>
+                    
+                    <p>It was uncomfortable. And exactly what I needed.</p>
+                    
+                    <p>Because once I stopped performing productivity, I realized I wasn't broken…I was burned out. And my value had never been about the volume of my workload. It had always been about vision, voice, and the way I connect dots others don't see.</p>
+                </section>
+                
+                <aside class="visual-element">
+                    <div class="pull-quote">
+                        "Once I stopped performing productivity, I realized I wasn't broken…I was burned out."
+                    </div>
+                </aside>
+                
+                <section class="main-content">
+                    <h2>A Website, a Blank Page, and the Return of Curiosity</h2>
+                    
+                    <p><span class="drop-cap">O</span>nce the noise quieted, curiosity came back.</p>
+                    
+                    <p>Real curiosity. Not the performative kind you add to LinkedIn bios. The kind that keeps you up late, not from anxiety, but from excitement. The kind that makes you tinker, test, and teach yourself things you never thought you'd take on solo.</p>
+                    
+                    <p>That's how my portfolio site was born.</p>
+                    
+                    <p>No agency. No team. Just me, a blank Framer canvas, some AI-powered sidekicks, and one big question: what would it look like to design something that feels like me?</p>
+                </section>
+                
+                <aside class="visual-element">
+                    <div class="data-viz">
+                        <div class="data-viz-title">Creative Process Evolution</div>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Intentional pause to break old patterns</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Curiosity emerges in the quiet space</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Self-directed exploration follows intuition</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Creation aligned with authentic voice</div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <section class="main-content">
+                    <p>It turned out to be more than a website. It became a playground for everything I'd been learning and unlearning. Branding, typography, UX, storytelling—I pieced it all together intuitively, imperfectly, and proudly. And somewhere between debugging CSS and choosing font weights, I realized I wasn't just building a portfolio. I was rebuilding myself.</p>
+                </section>
+                
+                <div class="full-width">
+                    <hr class="section-divider">
+                </div>
+                
+                <section class="main-content">
+                    <h3>Tools that shaped the process:</h3>
+                    
+                    <ul class="tools-list">
+                        <li class="tool-item">
+                            <div class="tool-name">Framer</div>
+                            <div class="tool-description">visual playground</div>
+                        </li>
+                        <li class="tool-item">
+                            <div class="tool-name">ChatGPT, Copilot, GenSpark</div>
+                            <div class="tool-description">brainstorm buddies and problem solvers</div>
+                        </li>
+                        <li class="tool-item">
+                            <div class="tool-name">Trae</div>
+                            <div class="tool-description">IDE for adaptive AI development and autonomous coding workflows</div>
+                        </li>
+                        <li class="tool-item">
+                            <div class="tool-name">Canva Pro</div>
+                            <div class="tool-description">design polish and assets</div>
+                        </li>
+                        <li class="tool-item">
+                            <div class="tool-name">A healthy dose of intuition and YouTube rabbit holes</div>
+                        </li>
+                    </ul>
+                    
+                    <p>I'll share more behind-the-scenes next—especially how I used AI to save time and supercharge creativity. But for now, that site wasn't just a calling card. It was the spark.</p>
+                </section>
+                
+                <aside class="visual-element">
+                    <div class="data-viz">
+                        <div class="data-viz-title">Technology Meets Creativity</div>
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">AI-powered tools integrated into my workflow</div>
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">faster iteration on creative concepts</div>
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">possibilities when technology amplifies human creativity</div>
+                    </div>
+                </aside>
+                
+                <div class="full-width">
+                    <h2>Final Thought: Rest Isn't the End. Sometimes It's the Beginning.</h2>
+                    
+                    <p><span class="drop-cap">I</span>f you're in a season of uncertainty—feeling underestimated, unarmored, or just plain tired: you're not broken.</p>
+                    
+                    <p>You may simply be between versions. And what's emerging might surprise you.</p>
+                </div>
+                
+                <div class="full-width footer-content">
+                    <div class="author-bio">
+                        <h3 class="author-name">Luis Gilberto</h3>
+                        <p>Luis is a seasoned creative strategist who helped shape brand and innovation narratives at Microsoft. Today, he explores the intersection of technology, creativity, and intentional career design through writing and thought leadership. This article kicks off a new series examining how professional identity can evolve beyond traditional corporate titles.</p>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <h3>What has slowing down helped you rediscover about yourself?</h3>
+                        <p>I'd love to hear in the comments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <p>LUIS-GILBERTO.COM • SUMMER 2025</p>
+                <p>© 2025 All Rights Reserved</p>
+            </footer>
+        </main>
+    </article>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDvIiOagWDCx0rj4SIqDM25wQiN%2FfCKMqaiEohRDIsixdo3y3Rk43GLvDi1P6f3BuegkTbhXrT0GAKjOB5u0xUMI5T8vMMHZ3X6CsIrT9qpgGKJNQLROKJtwlLcOvUM6MKWQQyZFtK6Y2TEiGe36obKilkNt7XrCHIAPPJCj0vdCIzfES9PW9Nm5NsTYdW9g8GZ%2FNgfYy1RHLZd6QXUZNkav9PwRZNGeadjBHkEylJQ%2BcP0o7dRS0NTDqagDdA4Po%2BBJARtjK2O7j4Zca0meQ0lJdZVZasTlXMyxDmuZwpn4vHh54JIlvAqs1zkQTY2XMpHivECygS3m0gewVMLG4j2PmnYfRrTkZYudDlNh3evAUjxQsMIJR%2ByyEfoL88AlWF8nrdsNfWsOnPUnQKoAxhSdK2QbgPIZQpy6uN5I2Fu6rD1NUyvMz62DSUQFKDJwJYxeHN68pXUPdULOVJRy6Jdn%2FfJebKUutINrkzKYVIzx0qMqzhGlBC3UeHfH4Y8DDGA%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDvIiOagWDCx0rj4SIqDM25wQiN/fCKMqaiEohRDIsixdo3y3Rk43GLvDi1P6f3BuegkTbhXrT0GAKjOB5u0xUMI5T8vMMHZ3X6CsIrT9qpgGKJNQLROKJtwlLcOvUM6MKWQQyZFtK6Y2TEiGe36obKilkNt7XrCHIAPPJCj0vdCIzfES9PW9Nm5NsTYdW9g8GZ/NgfYy1RHLZd6QXUZNkav9PwRZNGeadjBHkEylJQ+cP0o7dRS0NTDqagDdA4Po+BJARtjK2O7j4Zca0meQ0lJdZVZasTlXMyxDmuZwpn4vHh54JIlvAqs1zkQTY2XMpHivECygS3m0gewVMLG4j2PmnYfRrTkZYudDlNh3evAUjxQsMIJR+yyEfoL88AlWF8nrdsNfWsOnPUnQKoAxhSdK2QbgPIZQpy6uN5I2Fu6rD1NUyvMz62DSUQFKDJwJYxeHN68pXUPdULOVJRy6Jdn/fJebKUutINrkzKYVIzx0qMqzhGlBC3UeHfH4Y8DDGA==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
